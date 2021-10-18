@@ -1,0 +1,79 @@
+﻿<Window x:Class="AccountCheckerBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountCheckerBase"
+        mc:Ignorable="d"
+        Title="Account Checker Base C# - Matt101"
+        Icon="BaseIcon.ico"
+        Topmost="True"
+        Height="421.301" 
+        Width="803.444"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Style="{StaticResource CustomWindowStyle}">
+    <Grid>
+        <GroupBox Name="ComboProxyGroup" Header="Combolist/Proxies" Margin="8,10,621,205">
+            <Grid>
+                <Button Name="LoadComboButton" Content="Load Combo" Margin="11,10,11,98" Click="LoadComboButton_Click"/>
+                <Label Name="LoadedComboLabel" Content="Combos:" Margin="11,37,79,68"/>
+                <Label Name="LoadedComboValue" Content="0" Margin="68,37,11,68" HorizontalContentAlignment="Right"/>
+
+                <Button Name="LoadProxiesButton" Content="Load Proxies" Margin="11,68,11,40" Click="LoadProxiesButton_Click"/>
+                <Label Name="LoadedProxyLabel" Content="Proxies:" Margin="11,96,79,9"/>
+                <Label Name="LoadedProxyValue" Content="0" Margin="68,96,11,9" HorizontalContentAlignment="Right"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="ProxyTypeThreadGroup" Header="Proxy Type/Threads" Margin="8,194,621,10">
+            <Grid>
+                <Label Name="ProxySelectionLabel" Content="Proxy Type" Margin="11,3,11,114" HorizontalContentAlignment="Center"/>
+                <ComboBox Name="ProxySelectionBox" Margin="11,33,11,88" SelectedIndex="0">
+                    <ComboBoxItem Name="HttpsItem" Content="HTTP/s"/>
+                    <ComboBoxItem Name="Socks4Item" Content="Socks4"/>
+                    <ComboBoxItem Name="Socks5Item" Content="Socks5"/>
+                    <ComboBoxItem Name="ProxylessItem" Content="Proxyless"/>
+                </ComboBox>
+                <Label Name="ThreadAmountLabel" Content="Threads:" Margin="11,63,11,54" HorizontalContentAlignment="Center"/>
+                <Slider Name="ThreadSlider" Margin="11,91,11,29" Minimum="10" Maximum="500" TickPlacement="BottomRight" TickFrequency="50" IsSnapToTickEnabled="True"/>
+                <Label Name="ThreadAmountValue" Content="{Binding ElementName=ThreadSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Margin="11,118,11,-1" HorizontalContentAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+        <Border Name="ItemsBorder" Margin="187,305,8,10" BorderBrush="#FF343434" BorderThickness="1">
+            <Grid>
+                <Button Name="StartButton" Content="Start Checking" Margin="11,8,467,38"/>
+                <Button Name="StopButton" Content="Stop Checking" Margin="11,38,467,8"/>
+                <Label Name="CheckedLabel" Content="Checked:" Margin="188,9,344,37"/>
+                <Label Name="CheckedValue" Content="0" Margin="245,9,289,37"/>
+                <Label Name="RemainLabel" Content="Remain:" Margin="188,39,344,7"/>
+                <Label Name="RemainValue" Content="0" Margin="245,39,289,7"/>
+                <Label Name="GoodLabel" Content="Good:" Margin="316,9,216,37"/>
+                <Label Name="GoodValue" Content="0" Margin="372,9,160,37" Foreground="LightGreen"/>
+                <Label Name="BadLabel" Content="Bad:" Margin="316,39,216,7"/>
+                <Label Name="BadValue" Content="0" Margin="372,39,160,7" Foreground="Red"/>
+                <Label Name="ErrorLabel" Content="Error:" Margin="447,9,85,37"/>
+                <Label Name="ErrorValue" Content="0" Margin="503,9,29,37" Foreground="Orange"/>
+                <Label Name="RetryLabel" Content="Retry:" Margin="447,39,85,7"/>
+                <Label Name="RetryValue" Content="0" Margin="503,39,29,7" Foreground="LightBlue"/>
+            </Grid>
+        </Border>
+        <TabControl Name="ResultTabControl" Margin="187,10,8,90">
+            <TabItem Name="ListViewTabItem" Header="List View">
+                <ListView Name="ListViewResults">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="EmailHeader" Header="Email" Width="150"/>
+                            <GridViewColumn x:Name="PassHeader" Header="Pass" Width="150"/>
+                            <GridViewColumn x:Name="ExtraHeader1" Header="Extra Header" Width="150"/>
+                            <GridViewColumn x:Name="ExtraHeader2" Header="Extra Header 2" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="TextViewTabItem" Header="Text View">
+                <TextBox Name="TextViewResults" IsReadOnly="True"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
