@@ -21,13 +21,7 @@ namespace AccountCheckerBase
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-        public static List<string> list0;
-        public static int int0;
-
-        public static List<string> list1;
-        public static int int1;
-
+    
         public MainWindow()
         {
             InitializeComponent();
