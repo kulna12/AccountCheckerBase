@@ -8,19 +8,8 @@ The theming was possible by [WPFDarkTheme](https://github.com/AngryCarrot789/WPF
 
 Simply download or clone the github repo and open the .sln file in Visual Studio 2019.
 
-Then, go to the NuGet Package Manager and install the following:
+Then, go to Project > Manage NuGet Packages and update Fody.
 
-```
-Install-Package Fody
-```
-
-```
-Install-Package Costura.Fody
-```
-
-```
-Install-Package Leaf.xNet
-```
 
 ### Design
 Here's a picture of the UI:
