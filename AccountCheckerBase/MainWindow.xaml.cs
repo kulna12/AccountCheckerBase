@@ -41,7 +41,7 @@ namespace AccountCheckerBase
                     foreach (string line in File.ReadAllLines(opencombo.FileName))
                         HelpingClass.list0.Add(line);
                     this.LoadedComboValue.Content = HelpingClass.list0.Count.ToString();
-                    int1 = HelpingClass.list0.Count;
+                    HelpingClass.int1 = HelpingClass.list0.Count;
                 }
             }
             catch
